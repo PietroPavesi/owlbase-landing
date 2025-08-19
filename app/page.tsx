@@ -5,12 +5,34 @@ import { useState } from 'react'
 export default function OwlbaseLanding() {
   const [email, setEmail] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you'd integrate with your email service (Mailchimp, ConvertKit, etc.)
-    console.log('Email submitted:', email)
-    setIsSubmitted(true)
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address')
+      return
+    }
+
+    setIsSubmitting(true)
+    
+    try {
+      // For now, just log it - you can integrate with your email service later
+      console.log('Email submitted:', email)
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Error submitting email:', error)
+      alert('Something went wrong. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const scrollToDemo = () => {
@@ -51,7 +73,7 @@ export default function OwlbaseLanding() {
           
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
             Owly uses AI to interview your experts and automatically generate onboarding or training materials, 
-            process documentation, and datasets for AI prompt engeneering.
+            process documentation, and datasets for AI prompt engineering.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -220,34 +242,37 @@ export default function OwlbaseLanding() {
             Be among the first to try Owlbase.ai
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Join our beta waitlist and shape the future knowledge work.
+            Join our beta waitlist and shape the future of knowledge work.
           </p>
           
           {!isSubmitted ? (
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                placeholder="Enter your work email"
+                required
+                disabled={isSubmitting}
+                className="flex-1 px-6 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-gray-900 placeholder-gray-500 bg-white disabled:bg-gray-50 disabled:text-gray-500"
               />
               <button
-                onClick={handleSubmit}
-                className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-amber-600 hover:to-orange-700 transition-all transform hover:scale-105 shadow-lg"
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-amber-600 hover:to-orange-700 transition-all transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
-                Join Waitlist
+                {isSubmitting ? 'Joining...' : 'Join Waitlist'}
               </button>
-            </div>
+            </form>
           ) : (
             <div className="bg-green-50 border border-green-200 rounded-xl p-6">
               <div className="text-green-800 font-semibold mb-2">Thanks for joining! 🎉</div>
-              <p className="text-green-700">              We&apos;ll be in touch soon with beta access and updates.</p>
+              <p className="text-green-700">We&apos;ll be in touch soon with beta access and updates.</p>
             </div>
           )}
           
           <p className="text-sm text-gray-500 mt-4">
-            No spam, ever.             We&apos;ll only send updates about Owlbase.ai beta access.
+            No spam, ever. We&apos;ll only send updates about Owlbase.ai beta access.
           </p>
         </div>
       </section>

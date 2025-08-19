@@ -41,17 +41,17 @@ export default function OwlbaseLanding() {
       <section className="px-6 py-20">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-medium mb-8">
-            🚀             We&apos;re building something new
+            🚀 Building Owly, the AI companion for the future of knowledge work
           </div>
           
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Turn expert conversations into
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600"> training guides & process docs</span>
+            Turn expert knowledge into
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600"> training guides, process docs & AI-ready context</span>
           </h1>
           
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Owlbase.ai uses AI to interview your experts and automatically generate onboarding materials, 
-            process documentation, and training content. No more lost knowledge when people leave.
+            Owly uses AI to interview your experts and automatically generate onboarding or training materials, 
+            process documentation, and datasets for AI prompt engeneering.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -220,7 +220,7 @@ export default function OwlbaseLanding() {
             Be among the first to try Owlbase.ai
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Join our beta waitlist and help shape the future of organizational knowledge sharing.
+            Join our beta waitlist and shape the future knowledge work.
           </p>
           
           {!isSubmitted ? (
@@ -275,7 +275,7 @@ export default function OwlbaseLanding() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            © 2025 Owlbase.ai. Transforming expertise into wisdom.
+            © 2025 Owlbase.ai. Transform expertise into organizational wisdom • Built for the future of knowledge work
           </div>
         </div>
       </footer>

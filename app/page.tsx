@@ -1,95 +1,285 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
 
-export default function Home() {
+import { useState } from 'react'
+import Image from 'next/image'
+
+export default function OwlbaseLanding() {
+  const [email, setEmail] = useState('')
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Here you'd integrate with your email service (Mailchimp, ConvertKit, etc.)
+    console.log('Email submitted:', email)
+    setIsSubmitted(true)
+  }
+
+  const scrollToDemo = () => {
+    document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const scrollToHowItWorks = () => {
+    document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gradient-to-br from-warm-white to-soft-gray">
+      {/* Navigation */}
+      <nav className="p-6">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-3">
+            {/* Owly Icon */}
+            <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-lg">🦉</span>
+            </div>
+            <span className="text-2xl font-bold text-gray-900">Owlbase.ai</span>
+          </div>
+          <div className="text-sm text-gray-600">Coming Soon</div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="px-6 py-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-medium mb-8">
+            🚀 We're building something new
+          </div>
+          
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            Turn expert conversations into
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600"> training guides & process docs</span>
+          </h1>
+          
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Owlbase.ai uses AI to interview your experts and automatically generate onboarding materials, 
+            process documentation, and training content. No more lost knowledge when people leave.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={scrollToDemo}
+              className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-amber-600 hover:to-orange-700 transition-all transform hover:scale-105 shadow-lg"
+            >
+              Join the Waitlist
+            </button>
+            <button 
+              onClick={scrollToHowItWorks}
+              className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold hover:border-gray-400 hover:bg-gray-50 transition-all"
+            >
+              Learn More
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* The Problem */}
+      <section className="px-6 py-20 bg-gradient-to-r from-slate-50 to-gray-100">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+            Knowledge is walking out the door
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="p-6">
+              <div className="text-4xl font-bold text-amber-600 mb-2">42%</div>
+              <p className="text-gray-600">of institutional knowledge exists only in employees' minds</p>
+            </div>
+            <div className="p-6">
+              <div className="text-4xl font-bold text-amber-600 mb-2">10,000</div>
+              <p className="text-gray-600">Baby Boomers retire daily, taking decades of expertise with them</p>
+            </div>
+            <div className="p-6">
+              <div className="text-4xl font-bold text-amber-600 mb-2">75%</div>
+              <p className="text-gray-600">of companies struggle to implement AI due to lack of structured knowledge</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet Owly & Outputs */}
+      <section className="px-6 py-20">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              See what Owlbase.ai creates for you
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              After a 30-minute conversation with your expert, Owly automatically generates 
+              ready-to-use business documents and training materials.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-amber-100">
+              <div className="text-amber-600 text-2xl mb-3">📋</div>
+              <h3 className="font-semibold text-gray-900 mb-2">Process Documents</h3>
+              <p className="text-sm text-gray-600">Step-by-step guides and SOPs</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-green-100">
+              <div className="text-green-600 text-2xl mb-3">🎓</div>
+              <h3 className="font-semibold text-gray-900 mb-2">Training Materials</h3>
+              <p className="text-sm text-gray-600">Onboarding guides and tutorials</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-blue-100">
+              <div className="text-blue-600 text-2xl mb-3">🗺️</div>
+              <h3 className="font-semibold text-gray-900 mb-2">Decision Trees</h3>
+              <p className="text-sm text-gray-600">Logic flows and decision guides</p>
+            </div>
+            <div className="bg-white rounded-xl p-6 shadow-sm border border-purple-100">
+              <div className="text-purple-600 text-2xl mb-3">🤖</div>
+              <h3 className="font-semibold text-gray-900 mb-2">AI Training Data</h3>
+              <p className="text-sm text-gray-600">Structured datasets for AI models</p>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-2xl p-8 md:p-12">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Meet Owly, your AI interviewer</h3>
+              <p className="text-gray-600">Instead of forms and surveys, Owly has natural conversations with your experts</p>
+            </div>
+            <div className="flex flex-col md:flex-row items-start gap-8">
+              <div className="md:w-1/3">
+                {/* Owly Character Placeholder */}
+                <div className="w-24 h-24 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto">
+                  <span className="text-white text-4xl">🦉</span>
+                </div>
+              </div>
+              <div className="md:w-2/3 space-y-4">
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-green-100">
+                  <div className="text-sm text-emerald-600 font-semibold mb-1">Owly:</div>
+                  <p className="text-gray-700 text-sm">
+                    "Hi! Tell me about your customer onboarding process. What's the first thing you do when a new client signs up?"
+                  </p>
+                </div>
+                <div className="bg-amber-50 rounded-xl p-4 border border-amber-100 ml-8">
+                  <div className="text-sm text-amber-700 font-semibold mb-1">Expert:</div>
+                  <p className="text-gray-700 text-sm">
+                    "First, I personally call them within 24 hours. I've learned that if you wait longer, engagement drops by 40%..."
+                  </p>
+                </div>
+                <div className="bg-white rounded-xl p-4 shadow-sm border border-green-100">
+                  <div className="text-sm text-emerald-600 font-semibold mb-1">Owly:</div>
+                  <p className="text-gray-700 text-sm">
+                    "That's fascinating! What specifically do you say in that call to maximize engagement?"
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section id="how-it-works" className="px-6 py-20 bg-gradient-to-r from-slate-50 to-gray-100">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              Knowledge transformation, simplified
+            </h2>
+            <p className="text-xl text-gray-600">
+              Three steps to turn your expertise into organizational wisdom
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white text-2xl font-bold">1</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">30-Minute AI Interview</h3>
+              <p className="text-gray-600">
+                Owly asks smart questions to understand your expert's processes, decisions, and know-how.
+              </p>
+            </div>
+            
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white text-2xl font-bold">2</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Auto-Generate Documents</h3>
+              <p className="text-gray-600">
+                Our AI instantly creates training guides, process docs, and decision trees from the conversation.
+              </p>
+            </div>
+            
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-white text-2xl font-bold">3</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Download & Use</h3>
+              <p className="text-gray-600">
+                Get ready-to-use onboarding materials, SOPs, and training content you can implement immediately.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Beta Waitlist */}
+      <section id="demo" className="px-6 py-20">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Be among the first to try Owlbase.ai
+          </h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Join our beta waitlist and help shape the future of organizational knowledge sharing.
+          </p>
+          
+          {!isSubmitted ? (
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="flex-1 px-6 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+              />
+              <button
+                onClick={handleSubmit}
+                className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-amber-600 hover:to-orange-700 transition-all transform hover:scale-105 shadow-lg"
+              >
+                Join Waitlist
+              </button>
+            </div>
+          ) : (
+            <div className="bg-green-50 border border-green-200 rounded-xl p-6">
+              <div className="text-green-800 font-semibold mb-2">Thanks for joining! 🎉</div>
+              <p className="text-green-700">We'll be in touch soon with beta access and updates.</p>
+            </div>
+          )}
+          
+          <p className="text-sm text-gray-500 mt-4">
+            No spam, ever. We'll only send updates about Owlbase.ai beta access.
+          </p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white px-6 py-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center space-x-3 mb-6 md:mb-0">
+              <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center">
+                <span className="text-white text-sm">🦉</span>
+              </div>
+              <span className="text-xl font-bold">Owlbase.ai</span>
+            </div>
+            <div className="flex space-x-6 text-sm text-gray-400">
+              <a href="mailto:hello@owlbase.ai" className="hover:text-white transition-colors">
+                Contact
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                Privacy
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                Terms
+              </a>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+            © 2025 Owlbase.ai. Transforming expertise into wisdom.
+          </div>
+        </div>
       </footer>
     </div>
-  );
+  )
 }

@@ -20,13 +20,26 @@ export default function OwlbaseLanding() {
     setIsSubmitting(true)
     
     try {
-      // For now, just log it - you can integrate with your email service later
-      console.log('Email submitted:', email)
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      setIsSubmitted(true)
+      // Replace YOUR_FORM_ID with your actual Formspree form ID
+      const response = await fetch('https://formspree.io/f/xanbgnpo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          subject: 'New Owlbase Waitlist Signup',
+          message: `New waitlist signup from: ${email}`
+        }),
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        // Optional: Reset form
+        setEmail('')
+      } else {
+        throw new Error('Failed to submit')
+      }
     } catch (error) {
       console.error('Error submitting email:', error)
       alert('Something went wrong. Please try again.')

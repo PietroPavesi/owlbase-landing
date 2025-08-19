@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 
 export default function OwlbaseLanding() {
   const [email, setEmail] = useState('')
@@ -23,7 +22,7 @@ export default function OwlbaseLanding() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-warm-white to-soft-gray">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Navigation */}
       <nav className="p-6">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
@@ -42,17 +41,17 @@ export default function OwlbaseLanding() {
       <section className="px-6 py-20">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-medium mb-8">
-          🚀 Building Owly, the AI companion for the future of knowledge work
+            🚀             We&apos;re building something new
           </div>
           
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Turn expert knowledge into
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600"> training guides, process docs & AI-ready context</span>
+            Turn expert conversations into
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600"> training guides & process docs</span>
           </h1>
           
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Owly uses AI to interview your experts and automatically generate onboarding or training materials, 
-            process documentation, and datasets for AI prompt engeneering.
+            Owlbase.ai uses AI to interview your experts and automatically generate onboarding materials, 
+            process documentation, and training content. No more lost knowledge when people leave.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -81,7 +80,7 @@ export default function OwlbaseLanding() {
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="p-6">
               <div className="text-4xl font-bold text-amber-600 mb-2">42%</div>
-              <p className="text-gray-600">of domain knowledge exists only in employees' minds</p>
+              <p className="text-gray-600">of domain knowledge exists only in employees&apos; minds</p>
             </div>
             <div className="p-6">
               <div className="text-4xl font-bold text-amber-600 mb-2">10,000</div>
@@ -147,19 +146,19 @@ export default function OwlbaseLanding() {
                 <div className="bg-white rounded-xl p-4 shadow-sm border border-green-100">
                   <div className="text-sm text-emerald-600 font-semibold mb-1">Owly:</div>
                   <p className="text-gray-700 text-sm">
-                    "Hi! Tell me about your customer onboarding process. What's the first thing you do when a new client signs up?"
+                    &quot;Hi! Tell me about your customer onboarding process. What&apos;s the first thing you do when a new client signs up?&quot;
                   </p>
                 </div>
                 <div className="bg-amber-50 rounded-xl p-4 border border-amber-100 ml-8">
                   <div className="text-sm text-amber-700 font-semibold mb-1">Expert:</div>
                   <p className="text-gray-700 text-sm">
-                    "First, I personally call them within 24 hours. I've learned that if you wait longer, engagement drops by 40%..."
+                    &quot;First, I personally call them within 24 hours. I&apos;ve learned that if you wait longer, engagement drops by 40%...&quot;
                   </p>
                 </div>
                 <div className="bg-white rounded-xl p-4 shadow-sm border border-green-100">
                   <div className="text-sm text-emerald-600 font-semibold mb-1">Owly:</div>
                   <p className="text-gray-700 text-sm">
-                    "That's fascinating! What specifically do you say in that call to maximize engagement?"
+                    &quot;That&apos;s fascinating! What specifically do you say in that call to maximize engagement?&quot;
                   </p>
                 </div>
               </div>
@@ -187,7 +186,7 @@ export default function OwlbaseLanding() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">30-Minute AI Interview</h3>
               <p className="text-gray-600">
-                Owly asks smart questions to understand your expert's processes, decisions, and know-how.
+                Owly asks smart questions to understand your expert&apos;s processes, decisions, and know-how.
               </p>
             </div>
             
@@ -221,7 +220,7 @@ export default function OwlbaseLanding() {
             Be among the first to try Owlbase.ai
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Join our beta waitlist and shape the future of knowledge work.
+            Join our beta waitlist and help shape the future of organizational knowledge sharing.
           </p>
           
           {!isSubmitted ? (
@@ -243,12 +242,12 @@ export default function OwlbaseLanding() {
           ) : (
             <div className="bg-green-50 border border-green-200 rounded-xl p-6">
               <div className="text-green-800 font-semibold mb-2">Thanks for joining! 🎉</div>
-              <p className="text-green-700">We'll be in touch soon with beta access and updates.</p>
+              <p className="text-green-700">              We&apos;ll be in touch soon with beta access and updates.</p>
             </div>
           )}
           
           <p className="text-sm text-gray-500 mt-4">
-            No spam, ever. We'll only send updates about Owlbase.ai beta access.
+            No spam, ever.             We&apos;ll only send updates about Owlbase.ai beta access.
           </p>
         </div>
       </section>
@@ -276,7 +275,7 @@ export default function OwlbaseLanding() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            © 2025 Owlbase.ai. Transform expertise into organizational wisdom • Built for the future of knowledge work
+            © 2025 Owlbase.ai. Transforming expertise into wisdom.
           </div>
         </div>
       </footer>
